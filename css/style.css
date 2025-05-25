@@ -96,6 +96,9 @@
     width: 90%; text-align: center;
     display: flex; flex-direction: column; gap: 24px;
 }
+.sect4>.icons_wrap>div>img{
+    width: 20%; margin: 0 auto;
+}
 .sect5{
     background: #ccc;
 }

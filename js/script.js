@@ -102,3 +102,30 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
       }
     });
   });
+
+  const imgs = document.querySelectorAll('.sect5>.container>div>.img_wrap');
+  const imgsRows = [];
+  imgs.forEach((item, index)=>{
+    const imgIndex = Math.floor(index/3);
+    if(!imgsRows[imgIndex]){
+      imgsRows[imgIndex] = [];
+    }
+    imgsRows[imgIndex].push(item);
+  });
+
+    imgsRows.forEach((row)=>{
+    gsap.from(row, {
+      opacity:0,
+      x:0,
+      duration:1,
+      stagger: 0.2,
+      scrollTrigger:{
+        trigger:row[0],
+        start:'top 60%', 
+        end:'bottom top',
+        toggleActions:'play none none reverse',
+        onEnter:()=> gsap.to(row, { opacity:1, y:0, stagger: 0.2, overwrite:true}),
+        onLeaveBack:()=> gsap.to(row, { opacity:1, y:100, stagger: 0.2, overwrite:true})
+      }
+    });
+  });
