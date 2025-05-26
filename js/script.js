@@ -130,3 +130,27 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
     });
   });
 
+  const textElement = document.querySelector('.text');
+  const text = textElement.textContent;
+  const textArray = text.split(''); console.log(textArray);
+  textElement.textContent = '';
+
+  textArray.forEach((char, index)=>{
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.opacity = 0;
+      span.style.display = 'inline-block';
+      span.style.minWidth = '10px';
+      textElement.appendChild(span);
+      gsap.fromTo(span, {
+          y:40,
+          opacity:0
+      },{
+          duration:0.1,
+          y:0,
+          opacity:1,
+          delay:index*0.1,
+          ease:'power2.out'
+
+      })
+  })
