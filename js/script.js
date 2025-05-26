@@ -132,7 +132,7 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
 
   const textElement = document.querySelector('.text');
   const text = textElement.textContent;
-  const textArray = text.split(''); console.log(textArray);
+  const textArray = text.split('');
   textElement.textContent = '';
 
   textArray.forEach((char, index)=>{
