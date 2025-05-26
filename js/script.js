@@ -54,7 +54,7 @@ const checkWindow=()=>{
     });
   }
 }
-checkWindow(); // 최초실행
+checkWindow();
 window.addEventListener('resize',checkWindow);
 
 const toggleBtn=()=>{
@@ -103,9 +103,9 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
     });
   });
 
-  const imgs = document.querySelectorAll('.sect5>.container>div>.img_wrap');
+  const imgs5 = document.querySelectorAll('.sect5>.container>div>.img_wrap');
   const imgsRows = [];
-  imgs.forEach((item, index)=>{
+  imgs5.forEach((item, index)=>{
     const imgIndex = Math.floor(index/3);
     if(!imgsRows[imgIndex]){
       imgsRows[imgIndex] = [];
@@ -129,3 +129,4 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
       }
     });
   });
+

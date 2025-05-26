@@ -16,7 +16,7 @@
 #main_header.fix{
     background-color: transparent; color: #fff;
 }
-#main_header.fix > .gnb a{ color: #fff;}
+
 
 #main_header>h1{
     display: block; width: 200px; height: 60px; font-size: 1.5rem;  text-align: center;
@@ -87,6 +87,13 @@
 .sect1>.container>.text_wrap{
     width: 50%; padding: 10px;
 }
+.main_banner{
+    margin-top: 60px; padding: 24px;
+}
+
+.main_banner>strong{
+    color: #fff; font-size: 36px;
+}
 
 .sect4>.icons_wrap{
     display: flex; flex-flow: column; width: 100%; gap: 10px;
@@ -109,7 +116,7 @@
 }
 
 .sect5>.container>div{
-    width: 100%; display: flex; border:1px solid #151515;
+    width: 100%; display: flex; background-color: #fff; border-radius: 30px;
 }
 .sect5>.container>div>.img_wrap{
     width: 70%;
@@ -188,9 +195,15 @@
 }
 
 @media screen and (min-width: 1200px)  {
+    #main_header > .toggle_btn {
+        display: none;
+    }
+
     .container{
         max-width: 1280px;
     }
+
+    #main_header.fix > .gnb a{ color: #fff;}
 
     #main_header>.gnb {
         background: transparent; position: static; width: 1280px; height: 60px; left: 0;
@@ -215,12 +228,12 @@
     }
 
     .sect1>.container>.img_wrap {
-        padding: 24px; max-width: 600px; max-height: 400px;
+        padding: 24px; max-width: 500px; max-height: 600px;
     }
 
 
     .sect4>.icons_wrap{
-        flex-flow: row wrap; margin: 0 auto; justify-content: center;
+        flex-flow: row wrap; margin: 0 auto; justify-content: center; max-width: 1280px;
     }
     .sect4>.icons_wrap>div{
         width: 22%; min-height: 300px; justify-content: center; margin: 0;
@@ -247,13 +260,18 @@
 
     .sect7>.sect7_top{
         display: flex; margin-bottom: 30px; justify-content: center;
+        padding: 0 15px;
+        gap: 60px;
     }
 
     .sect7>.sect7_top>.title{
         width: 30%;
     }
     .sect7>.sect7_top>.notice_wrap{
-        width: 40%;
+        width: 50%;
+    }
+    .sect7>.sect7_top>.notice_wrap>ul{
+        display: flex; flex-direction: column; gap: 10px;
     }
     .sect7>.sect7_bottom{
         justify-content: center;
