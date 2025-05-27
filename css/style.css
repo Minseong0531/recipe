@@ -4,9 +4,6 @@
     padding: 200px 0;
 }
 
-.sect7{
-    background-color: #ccc;
-}
 
 #main_header{
     position: fixed; left: 0; top: 0; width: 100%; height: 60px; z-index: 100000;
@@ -36,6 +33,10 @@
     padding-left: 1.25rem; font-size: 0.92rem; margin-top: 10px; display: none;
 }
 
+#main_header > .icons_top{
+    margin: 0 24px;
+}
+
 #main_header > .icons_top > ul{
     display: flex; flex-direction: row; height: 60px; align-items: center; gap: 5px;
 }
@@ -55,21 +56,23 @@
 }
 
 #main_section > .main_banner{
-    width: 100vw; height: 60vh; background: #151515;
+   background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/food.jpg'); width: 100vw; min-height: 600px; 
+   display: flex; justify-content: center;
 }
 
 .title{
     width: 100%;
     text-align: center;
+    margin-bottom: 15px;
 }
 .title>span{
-    color: #eb5656; font-size: 18px; font-weight: 700;
+    color: #eb5656; font-size: 22px; font-weight: 700;
 }
 .title>h2{
-    font-size: 24px; color: #151515;
+    font-size: 36px; color: #151515;
 }
 .title>a{
-    color:#151515
+    color:#151515; font-size: 18px;
 }
 
 .sect1{
@@ -92,7 +95,7 @@
 }
 
 .main_banner>div{
-    color: #fff; font-size: 2rem;
+    color: #fff; font-size: 2rem; display: flex; flex-flow: row wrap; justify-content: center; align-items: center;
 }
 
 .sect4>.icons_wrap{
@@ -120,15 +123,30 @@
     box-shadow: 0px -1px 5px #222; 
 }
 .sect5>.container>div>.img_wrap{
-    width: 70%;
+    width: 60%;
 }
 .sect5>.container>div>.img_wrap>img{
     width: 100%; 
+}
+.sect5>.container>div>.text_wrap{
+    width: 40%; padding: 24px 5px; display: flex; flex-flow: column;
+}
+.sect5>.container>div>.text_wrap>h3{
+    
+    color: #eb5656; font-size: 20px; font-weight: 700;
 }
 
 
 .sect7{
     padding: 10%;
+}
+
+.sect7>.sect7_top>.notice_wrap>ul{
+    display: flex; flex-flow: column; gap: 5px; align-items: center; margin: 20px 0px;
+}
+
+.sect7>.sect7_top>.notice_wrap>ul>li{
+    border-bottom: 1px solid #ccc; padding-bottom: 7px;
 }
 
 .sect7>.sect7_top>.notice_wrap>ul>li>a{
@@ -142,12 +160,15 @@
 
 .sect7>.sect7_bottom{
     display: flex; flex-direction: row; position: relative; left: 0;
-    padding: 0 15px; gap: 10px;
+    padding: 0 15px; gap: 70px;
 }
 .sect7>.sect7_bottom>.text_wrap{
     width: 50%; height: auto; display: flex; flex-direction: column; justify-content: flex-end;
-    text-align: left;
-    
+    text-align: left; font-size: 28px; gap: 30px; padding-left: 5%;
+}
+
+.sect7>.sect7_bottom>.text_wrap>h2{
+    font-weight: 700;
 }
 
 .sect7>.sect7_bottom>.img_wrap{
@@ -169,11 +190,10 @@
 #main_footer>ul>li>a{
     color: #ccc;
 }
-.copy{
-    color: #ccc; font-size: 10px;
-}
-.copy>span{
-    display: block; margin: 0 auto;
+#main_footer>.copy{
+    width: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: #ccc; font-size: 12px;
 }
 
 @media screen and (min-width: 1200px)  {
@@ -185,6 +205,9 @@
         max-width: 1280px;
     }
 
+    #main_header.fix>.gnb>ul>li>.sub>ul>li>a{
+        color: #151515;
+    }
     #main_header.fix > .gnb a{ color: #fff;}
 
     #main_header>.gnb {
@@ -217,6 +240,14 @@
         padding: 24px; max-width: 500px; max-height: 600px;
     }
 
+    .sect1>.container>.text_wrap{
+        text-align: left; margin-top: 200px;
+    }
+
+    .sect1>.container>.text_wrap>p{
+        font-size: 36px;
+    }
+
 
     .sect4>.icons_wrap{
         flex-flow: row wrap; margin: 0 auto; justify-content: center; max-width: 1280px;
@@ -240,7 +271,7 @@
         width: 100%;
     }
     .sect5>.container>div>.text_wrap{
-        padding: 20px;
+        padding: 20px; width: 100%;
     }
     .sect5>.container>div>.text_wrap>h3{
         font-size: 24px; color: #eb5656; font-weight: 700;
@@ -249,6 +280,7 @@
     .swiper{
         width: 40%; overflow: visible;
     }
+
 
     .sect7>.sect7_top{
         display: flex; margin-bottom: 30px; justify-content: center;
@@ -272,7 +304,7 @@
         width: 30%;
     }
     .sect7>.sect7_bottom>.text_wrap{
-        font-size: 28px; gap: 30px; padding-left: 5%;
+        font-size: 28px; gap: 70px; padding-left: 5%;
     }
     .sect7>.sect7_bottom>.text_wrap>h2{
         font-weight: 700;
