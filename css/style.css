@@ -230,14 +230,7 @@
 }
 
 
-.search_area{
-    position: fixed;  left: 0; top: 0; width: 100%; height: 100vh; background-color: #fff; z-index: 999999;;
-    display: flex; justify-content: center; align-items: center; display: none;    }
-.search_area.on{display: block;}
 
-.search_area>form{
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-}
 
 .login-wrapper{display: none;}
 .login-wrapper.on{display: block;}
@@ -310,10 +303,17 @@
 }
 
 .search_area {
-    max-width: 50vw; max-height: 50vw; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    margin: 0 auto;    padding: 1rem;    background-color: #fff;
-    border-radius: 12px;    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100vw; height: 100vh; position: fixed; left: 0; top: 0; transform: none;
+    margin: 0 auto;    padding: 30px;    background-color: #fff; z-index: 999999;
+    border-radius: 12px;    box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: none;
   }
+  .search_area.on{display: block;}
+
+  .search_area>form{
+    min-width: 340px;
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+}
+
   fieldset{border: 1px solid #ccc; padding: 24px;}
   .search_area form table { width: 100%; border-collapse: collapse; }
   
@@ -351,6 +351,25 @@
     .search_area button {display: inline-block; width: 48%; margin: 0.5rem 5px;    }
     .search_area label{text-align: center;}
 
+    @media screen and (min-width: 361px) and (max-width: 1199px){
+
+        .sect4>.icons_wrap{
+            flex-flow: row wrap;
+            padding: 10%;
+        }
+        
+        .sect4>.icons_wrap>div{
+            width: 45%;  margin-bottom: 20px;
+        }
+
+        .sect5>.container>div{
+            width: 50%;
+        }
+        .sect5>.container>div:nth-of-type(2),
+        .sect5>.container>div:nth-of-type(4){
+            margin-left: 50%;
+        }
+    }
 @media screen and (min-width: 1200px)  {
     #main_header > .toggle_btn {
         display: none;
@@ -468,5 +487,14 @@
         width: 60vw;    height: 60vh;
         transform: translate(-50%,-50%);
         
+    }
+
+    .search_area{
+        width: 50vw; height: 80vh; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            }
+    
+    
+    .search_area>form{
+        position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
     }
 }
