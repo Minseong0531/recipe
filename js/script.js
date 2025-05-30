@@ -1,13 +1,72 @@
 var swiper = new Swiper(".mySwiper", {
-    pagination: {
-      el: ".swiper-pagination",
-      type: "progressbar",
-    },
+      slidesPerView: 1,
+      spaceBetween: 10,
+      centeredSlides: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    breakpoints: {
+    
+      768: {
+        slidesPerView: 2,  //브라우저가 768보다 클 때
+        spaceBetween: 40,
+      },
+      1200: {
+        slidesPerView: 3,  //브라우저가 1024보다 클 때
+        spaceBetween: 50,
+      },
+    },
   });
+
+
+ 
+
+  const searchForm = document.querySelector('#searchform');
+  const blackBg = document.querySelector('.black_bg')
+
+  searchForm.addEventListener('keypress',(event)=>{
+    if(event.key==='Enter'){
+      event.preventDefault();
+      this.submit();
+    }
+  })
+  const searchBtn = document.querySelector('.search')
+  searchBtn.addEventListener('click',(e)=>{
+    console.log('clickevent')
+    e.preventDefault();
+    document.querySelector('.search_area').classList.add('on');
+  })
+
+  const searchCloseBtn = document.querySelector('#close')
+
+  searchCloseBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    document.querySelector('.search_area').classList.remove('on');
+  })
+
+  const loginBtn = document.querySelector('.login')
+  loginBtn.addEventListener('click',(e)=>{
+    console.log('clickevent')
+    e.preventDefault();
+    if(document.querySelector('.search_area').classList.contains('on')){
+      document.querySelector('.search_area').classList.remove('on');
+    }
+    document.querySelector('.login-wrapper').classList.add('on');
+    blackBg.classList.add('active');
+  })
+
+  const loginCloseBtn = document.querySelector('.login-wrapper>form>#close')
+
+  loginCloseBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    document.querySelector('.login-wrapper').classList.remove('on');
+    blackBg.classList.remove('active');
+  })
 
 
   window.addEventListener('scroll',()=>{
@@ -35,7 +94,6 @@ const leaveFunc=(e)=>{
 
 const toggle = document.querySelector('.toggle_btn');
 const gnb = document.querySelector('.gnb');
-const bg = document.querySelector('.black_bg');
 let toggleState = true;
 
 
@@ -63,12 +121,14 @@ const toggleBtn=()=>{
       if(toggleState){
         console.log('clickevent');
         gnb.style.left = 0;
-        bg.style.display = 'block';
         toggleState = false;
+        if(window.innerWidth > 1200){
+          blackBg.style.display = 'block';
+        }
       }else{
         gnb.style.left = '-70vw';
         gnb.addEventListener('transitionend',()=>{gnb.style.transition = ''},{once:true});
-        bg.style.display = 'none';
+        blackBg.style.display = 'none';
         toggleState = true;
       }
     });
@@ -91,19 +151,19 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
       opacity:0,
       y:100,
       duration:1,
-      stagger: 0.2,
+      stagger: 0.1,
       scrollTrigger:{
         trigger:row[0],
         start:'top 60%', 
         end:'bottom top',
         toggleActions:'play none none reverse',
-        onEnter:()=> gsap.to(row, { opacity:1, y:0, stagger: 0.2, overwrite:true}),
-        onLeaveBack:()=> gsap.to(row, { opacity:1, y:100, stagger: 0.2, overwrite:true})
+        onEnter:()=> gsap.to(row, { opacity:1, y:0, stagger: 0.1, overwrite:true}),
+        onLeaveBack:()=> gsap.to(row, { opacity:1, y:100, stagger: 0.1, overwrite:true})
       }
     });
   });
 
-  const imgs5 = document.querySelectorAll('.sect5>.container>div>.img_wrap');
+  const imgs5 = document.querySelectorAll('.sect5>.container>div');
   const imgsRows = [];
   imgs5.forEach((item, index)=>{
     const imgIndex = Math.floor(index/3);
@@ -118,17 +178,32 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
       opacity:0,
       x:0,
       duration:1,
-      stagger: 0.2,
+      stagger: 0.4,
       scrollTrigger:{
         trigger:row[0],
         start:'top 60%', 
         end:'bottom top',
         toggleActions:'play none none reverse',
-        onEnter:()=> gsap.to(row, { opacity:1, y:0, stagger: 0.2, overwrite:true}),
-        onLeaveBack:()=> gsap.to(row, { opacity:1, y:100, stagger: 0.2, overwrite:true})
+        onEnter:()=> gsap.to(row, { opacity:1, y:0, stagger: 0.4, overwrite:true}),
+        onLeaveBack:()=> gsap.to(row, { opacity:1, y:100, stagger: 0.4, overwrite:true})
       }
     });
   });
+
+  const slideImg = document.querySelectorAll('.swiper-slide img');
+  const slideImgRows = [];
+  slideImg.forEach((img, index)=>{
+    const slideIndex = Math.floor(index/3);
+    if(!slideImgRows[slideIndex]){
+      slideImgRows[slideIndex] = [];
+    }
+    slideImgRows[slideIndex].push(img);
+  });
+  slideImgRows.forEach((slide)=>{
+    gsap.from(slide, {
+      
+    })
+  })
 
   const textElement = document.querySelector('.text');
   const text = textElement.textContent;
@@ -154,3 +229,4 @@ const iconImg = document.querySelectorAll('.sect4>.icons_wrap>div');
 
       })
   })
+

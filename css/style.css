@@ -1,22 +1,22 @@
 @charset "utf-8";
 
 .sect1,.sect2,.sect3,.sect4,.sect5,.sect6,.sect7{
-    padding: 200px 0;
+    padding: 100px 0;
 }
 
 
 #main_header{
     position: fixed; left: 0; top: 0; width: 100%; height: 60px; z-index: 100000;
-    background-color: #cdcdcd; display: flex; line-height: 60px; justify-content: space-between;
-    transition: 0.2s;
+    background-color: transparent; display: flex; line-height: 60px; justify-content: space-between;
+    transition: 0.2s;  align-items: center;
 }
 #main_header.fix{
-    background-color: transparent; color: #fff;
+    background-color: #fff; color: #151515; box-shadow: 1px 1px 5px #151515;
 }
 
 
 #main_header>h1{
-    display: block; width: 200px; height: 60px; font-size: 1.5rem;  text-align: center;
+    display: block; width: 200px; font-size: 1.5rem;  text-align: center;
 }
 
 #main_header>.gnb{
@@ -34,31 +34,39 @@
 }
 
 #main_header > .icons_top{
-    margin: 0 24px;
+    margin-left: auto;
 }
 
 #main_header > .icons_top > ul{
     display: flex; flex-direction: row; height: 60px; align-items: center; gap: 5px;
 }
 #main_header > .icons_top > ul > li{
-    width: 30px; height: 30px; background: #151515; border-radius: 50%; text-indent: -9999px;
+    width: 30px; height: 30px; border-radius: 50%; text-indent: -9999px;
     
+}
+#main_header > .icons_top > ul > li > a{
+    display: block; width: 100%; height: 100%; background: url('../images/search.png') center center no-repeat; background-size: contain; cursor: pointer;
+}
+#main_header > .icons_top > ul > li:last-child > a{
+    background: url('../images/login.png') center center no-repeat;
 }
 
 #main_header > .toggle_btn{
     width: 60px; height: 60px; background-color: transparent; border: 0px none; padding: 18px 0;
     display: flex; flex-direction: column; justify-content: space-between; align-items: center;
-    cursor: pointer;
+    cursor: pointer; z-index: 10000000;
 }
 
 #main_header > .toggle_btn > span{
-    display: block; width: 28px; height: 2px; background: #fff; border-radius: 2px;
+    display: block; width: 28px; height: 2px; background: #151515; border-radius: 2px;
 }
 
 #main_section > .main_banner{
    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/food.jpg'); width: 100vw; min-height: 600px; 
    display: flex; justify-content: center;
 }
+
+
 
 .title{
     width: 100%;
@@ -109,6 +117,13 @@
 .sect4>.icons_wrap>div>img{
     width: 20%; margin: 0 auto;
 }
+.sect4>.icons_wrap>div>h3{
+    font-size: 24px; font-weight: 700;
+}
+.sect4>.icons_wrap>div>p{
+    font-size: 18px;
+}
+
 .sect5{
     background: #ccc;
 }
@@ -126,7 +141,7 @@
     width: 60%;
 }
 .sect5>.container>div>.img_wrap>img{
-    width: 100%; 
+    width: 100%; border-radius: 30px;
 }
 .sect5>.container>div>.text_wrap{
     width: 40%; padding: 24px 5px; display: flex; flex-flow: column;
@@ -138,7 +153,7 @@
 
 
 .sect7{
-    padding: 10%;
+    padding: 5%;
 }
 
 .sect7>.sect7_top>.notice_wrap>ul{
@@ -160,12 +175,14 @@
 
 .sect7>.sect7_bottom{
     display: flex; flex-direction: row; position: relative; left: 0;
-    padding: 0 15px; gap: 70px;
+    padding: 0 15px; 
 }
 .sect7>.sect7_bottom>.text_wrap{
     width: 50%; height: auto; display: flex; flex-direction: column; justify-content: flex-end;
-    text-align: left; font-size: 28px; gap: 30px; padding-left: 5%;
+    text-align: left; font-size: 18px; gap: 30px; padding-left: 5%;
 }
+
+
 
 .sect7>.sect7_bottom>.text_wrap>h2{
     font-weight: 700;
@@ -196,6 +213,144 @@
     color: #ccc; font-size: 12px;
 }
 
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: #fff;
+  opacity: 0.5;
+  padding: 15px 5px;
+  border-radius: 20px;
+  color: black !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+
+.search_area{
+    position: fixed;  left: 0; top: 0; width: 100%; height: 100vh; background-color: #fff; z-index: 999999;;
+    display: flex; justify-content: center; align-items: center; display: none;    }
+.search_area.on{display: block;}
+
+.search_area>form{
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+}
+
+.login-wrapper{display: none;}
+.login-wrapper.on{display: block;}
+.login-wrapper> form> #close,
+.search_area > #close{
+    text-indent: -9999px; width: 50px; height: 50px; position: absolute; right: 20px; top: 20px; opacity: 0.4;
+    cursor: pointer; border: 0px none; background-color: transparent; border: 0 none; background: transparent;
+}
+.login-wrapper> form > #close::before,
+.login-wrapper> form > #close::after,
+.search_area > #close::before,
+.search_area > #close::after{
+    content: ""; position:absolute; width: 44px; height: 2px; border-radius: 2px; background-color: #222; left: 3px; top: 24px;
+    transform: rotate(45deg); 
+}
+.login-wrapper> form> #close::after,
+.search_area > #close::after{
+    transform: rotate(-45deg);
+}
+.login-wrapper> form> #close:hover,
+.search_area > #close:hover{
+     opacity: 1;
+}
+
+.login-wrapper{
+    position: fixed; left: 0; top: 0;
+    width: 100vw;    height: 100vh;    padding: 100px 40px;
+    box-sizing: border-box;    background: #fff;    z-index: 1000000;
+    
+}
+
+.login-wrapper > h2{
+    font-size: 24px;
+    color: #eb5656;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#login-form{
+    display: flex; flex-flow: column;
+    justify-content: center;
+     align-items: center;
+}
+#login-form > input{
+    width: 80%;
+    height: 48px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#login-form > input::placeholder{
+    color: #D2D2D2;
+}
+#login-form > input[type="submit"]{
+    color: #fff;
+    font-size: 16px;
+    background-color:#eb5656;
+    margin-top: 20px;
+}
+
+.black_bg{
+    display: block; width: 100vw; height: 100vh; display: none;
+    position: fixed; background-color: #151515; opacity: 0;
+    z-index: 999999; transition: .2s all; left: 0; top: 0;
+}
+.black_bg.active{
+    display: block; opacity: 0.7;
+}
+
+.search_area {
+    max-width: 50vw; max-height: 50vw; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    margin: 0 auto;    padding: 1rem;    background-color: #fff;
+    border-radius: 12px;    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  fieldset{border: 1px solid #ccc; padding: 24px;}
+  .search_area form table { width: 100%; border-collapse: collapse; }
+  
+  .search_area table th,
+  .search_area table td {padding: 8px; vertical-align: top; text-align: left;}
+  
+  .search_area table th { width: 30%; font-weight: 600; color: #333;
+  }
+  
+  .search_area table td input,
+  .search_area table td select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;  }
+  
+  .search_area .form-actions {margin-top: 10px; text-align: right;  }
+  
+  .search_area button {
+    background-color: #eb5656;    color: white;    border: none;    padding: 10px;
+    border-radius: 6px;    font-size: 1rem;    cursor: pointer;    margin-left: 5px  }
+  
+  .search_area button#close {    background-color: #ccc;    float: right;    margin-top: 10px;  }
+  
+    .search_area table,
+    .search_area table tbody,
+    .search_area table tr,
+    .search_area table th,
+    .search_area table td {
+        display: block;      width: 100%;
+    }
+  
+    .search_area table th { font-weight: bold;      padding-top: 1rem;    }
+  
+    .search_area table td { padding-top: 0.25rem; }
+  
+    .search_area .form-actions { display: flex; }
+  
+    .search_area button {display: inline-block; width: 48%; margin: 0.5rem 5px;    }
+    .search_area label{text-align: center;}
+
 @media screen and (min-width: 1200px)  {
     #main_header > .toggle_btn {
         display: none;
@@ -205,10 +360,8 @@
         max-width: 1280px;
     }
 
-    #main_header.fix>.gnb>ul>li>.sub>ul>li>a{
-        color: #151515;
-    }
-    #main_header.fix > .gnb a{ color: #fff;}
+
+    #main_header.fix > .gnb a{ color: #151515;}
 
     #main_header>.gnb {
         background: transparent; position: static; width: 1280px; height: 60px; left: 0;
@@ -278,7 +431,7 @@
     }
 
     .swiper{
-        width: 40%; overflow: visible;
+        width: 80%;
     }
 
 
@@ -298,7 +451,7 @@
         display: flex; flex-direction: column; gap: 10px;
     }
     .sect7>.sect7_bottom{
-        justify-content: center;
+        justify-content: center; gap: 100px;
     }
     .sect7>.sect7_bottom>.img_wrap{
         width: 30%;
@@ -310,5 +463,10 @@
         font-weight: 700;
     }
 
-
+    .login-wrapper{
+        position: fixed; left: 50%; top: 50%;
+        width: 60vw;    height: 60vh;
+        transform: translate(-50%,-50%);
+        
+    }
 }
