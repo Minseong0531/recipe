@@ -385,6 +385,7 @@
     #main_header>.gnb {
         background: transparent; position: static; width: 1280px; height: 60px; left: 0;
         top: 0; padding: 0; display: flex; justify-content: center; align-items: center;
+        margin: 0 auto;
     }
     #main_header > .gnb > ul {
         display: flex; flex-direction: row; gap: 100px; justify-content: center; font-size: 18px;
